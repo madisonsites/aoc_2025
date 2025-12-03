@@ -1,14 +1,17 @@
 defmodule Day02Test do
   use ExUnit.Case
 
-  # @short_input File.read!("input/day02-short.txt")
-  #        |> String.split("\n", trim: true)
+  @short_input File.read!("input/day02-short.txt")
+         |> String.trim()
+         |> String.split(",", trim: true)
 
-  # @long_input File.read!("input/day02-long.txt")
-  #        |> String.split("\n", trim: true)
+  @long_input File.read!("input/day02-long.txt")
+         |> String.trim()
+         |> String.split(",", trim: true)
 
   test "solves the puzzle" do
-    # assert Day02.solve(@short_input) == 6
+    assert Day02.solve(@short_input) == 1227775554
+    assert Day02.solve(@long_input) == 2
   end
 
   test "parse_line parses the input" do
