@@ -32,5 +32,18 @@ defmodule Day02Test do
     assert Day02.output_range({446443, 446449}) == [446443, 446444, 446445, 446446, 446447, 446448, 446449]
     assert Day02.output_range({38593856, 38593862}) == [38593856, 38593857, 38593858, 38593859, 38593860, 38593861, 38593862]
   end
+
+  test "even_length? returns true for even-length SKUs" do
+    ["11", "22", "95", "1012", "1188511880", "1188511890", "222220", "222224", "446443", "446449", "38593856", "38593862"]
+    |> Enum.each(fn sku ->
+      assert Day02.even_length?(sku) == true
+    end)
+  end
+
+  test "even_length? returns false for odd-length SKUs" do
+    ["111", "222", "955", "10122", "11885118800", "11885118900", "2222200", "2222244", "4464433", "4464499", "385938566", "385938622"]
+    |> Enum.each(fn sku ->
+      assert Day02.even_length?(sku) == false
+    end)
   end
 end
