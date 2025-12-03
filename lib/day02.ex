@@ -3,6 +3,7 @@ defmodule Day02 do
     input
     |> Enum.map(&parse_line/1)
     |> Enum.flat_map(&output_range/1)
+    |> Enum.filter(&invalid_sku?/1)
   end
 
   def parse_line(line) do
@@ -16,18 +17,17 @@ defmodule Day02 do
 
   def invalid_sku?(sku) do
     sku_string = Integer.to_string(sku)
-
-    if even_length?(sku_string) do
-      true
-    else
-      false
-    end
-  end
-
-  def even_length?(sku_string) do
     sku_length = String.length(sku_string)
     even_length = rem(sku_length, 2) == 0
 
-    even_length
+    if even_length do
+      halfway_point = (sku_length / 2) |> floor()
+      IO.inspect(sku_string, label: "sku_string")
+
+      {first_half, second_half} = String.split_at(sku_string, halfway_point)
+      first_half == second_half
+    else
+      false
+    end
   end
 end
