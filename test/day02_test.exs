@@ -10,8 +10,9 @@ defmodule Day02Test do
          |> String.split(",", trim: true)
 
   test "solves the puzzle" do
-    assert Day02.solve(@short_input) == 1227775554
-    assert Day02.solve(@long_input) == 26255179562
+    assert Day02.solve(@short_input) == 4174379265
+    # assert Day02.solve(@long_input) == 31680313976
+    assert Day02.solve(@long_input) == 31680313976
   end
 
   test "parse_line parses the input" do
@@ -26,7 +27,7 @@ defmodule Day02Test do
   end
 
   test "invalid_sku? returns true for repeated digit SKUs" do
-    [11, 22, 99, 1010, 1188511885, 222222, 446446, 38593859]
+    [11, 22, 99, 111, 222, 999, 1010, 1188511885, 222222, 446446, 38593859, 565656, 824824824, 2121212121]
     |> Enum.each(fn sku ->
       assert Day02.invalid_sku?(sku) == true
     end)
@@ -40,7 +41,7 @@ defmodule Day02Test do
   end
 
   test "invalid_sku? returns false for odd-length SKUs" do
-    [111, 222, 955, 10122, 11885118800, 11885118900, 2222200, 2222244, 4464433, 4464499, 385938566, 385938622]
+    [ 955, 10122, 11885118800, 11885118900, 2222200, 2222244, 4464433, 4464499, 385938566, 385938622]
     |> Enum.each(fn sku ->
       assert Day02.invalid_sku?(sku) == false
     end)
